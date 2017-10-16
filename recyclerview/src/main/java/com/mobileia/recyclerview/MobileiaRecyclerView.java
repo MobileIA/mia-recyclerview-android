@@ -23,6 +23,10 @@ public class MobileiaRecyclerView extends RelativeLayout {
      * Almacena instancia del listado
      */
     protected RecyclerView mRecyclerView;
+    /**
+     * Almacena contenedor de la vista de cuando no hay elementos
+     */
+    protected RelativeLayout mContainerEmpty;
 
     public MobileiaRecyclerView(Context context) {
         super(context);
@@ -81,6 +85,36 @@ public class MobileiaRecyclerView extends RelativeLayout {
     }
 
     /**
+     * Configura la vista de cuando no hay elementos
+     * @param layout
+     */
+    public void setEmptyView(int layout){
+        // Inflar vista en el contenedor
+        View view = LayoutInflater.from(getContext()).inflate(layout, mContainerEmpty, false);
+        // Agregamos la vista
+        setEmptyView(view);
+    }
+
+    /**
+     * Configura la vista de cuando no hay elementos
+     * @param view
+     */
+    public void setEmptyView(View view){
+        // Agregar vista
+        mContainerEmpty.addView(view);
+    }
+
+    /**
+     * Muestra la vista de cuando no hay elementos
+     */
+    public void showEmptyView(){
+        // Ocultar listado
+        mSwipeRefresh.setVisibility(GONE);
+        // Mostrar vista
+        mContainerEmpty.setVisibility(VISIBLE);
+    }
+
+    /**
      * Metodo constructor de la vista
      */
     protected void init(){
@@ -100,6 +134,8 @@ public class MobileiaRecyclerView extends RelativeLayout {
         mSwipeRefresh.setEnabled(false);
         // Obtenemos el listado
         mRecyclerView = findViewById(R.id.recyclerView);
+        // Obtener contendor de vista vacia
+        mContainerEmpty = findViewById(R.id.container_empty);
     }
     /**
      * Se encarga de inflar el layout base y agregarlo a la vista

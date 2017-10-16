@@ -42,5 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.stopRefreshing();
             }
         });
+        // Agregar vista vacia
+        recyclerView.setEmptyView(R.layout.item_empty);
+        recyclerView.showEmptyView();
     }
 }

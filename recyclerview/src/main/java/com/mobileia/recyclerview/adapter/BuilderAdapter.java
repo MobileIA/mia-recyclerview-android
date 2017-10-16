@@ -28,6 +28,20 @@ public class BuilderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      */
     protected int mLayout;
 
+    /**
+     * Constructor basico
+     */
+    public BuilderAdapter(){}
+
+    /**
+     * Constructor con el viewHolder
+     * @param layout
+     * @param baseViewHolder
+     */
+    public BuilderAdapter(int layout, Class<?> baseViewHolder){
+        setViewHolder(layout, baseViewHolder);
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Inflamos el layout
