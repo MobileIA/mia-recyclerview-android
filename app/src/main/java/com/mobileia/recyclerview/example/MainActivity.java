@@ -45,5 +45,8 @@ public class MainActivity extends AppCompatActivity {
         // Agregar vista vacia
         recyclerView.setEmptyView(R.layout.item_empty);
         recyclerView.showEmptyView();
+        // Agregar vista de loading
+        recyclerView.setLoadingView(R.layout.item_loading);
+        recyclerView.startLoading();
     }
 }

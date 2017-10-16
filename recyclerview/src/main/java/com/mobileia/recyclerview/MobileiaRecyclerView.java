@@ -27,6 +27,10 @@ public class MobileiaRecyclerView extends RelativeLayout {
      * Almacena contenedor de la vista de cuando no hay elementos
      */
     protected RelativeLayout mContainerEmpty;
+    /**
+     * Almacena el contendor del loading
+     */
+    protected RelativeLayout mContainerLoading;
 
     public MobileiaRecyclerView(Context context) {
         super(context);
@@ -110,8 +114,54 @@ public class MobileiaRecyclerView extends RelativeLayout {
     public void showEmptyView(){
         // Ocultar listado
         mSwipeRefresh.setVisibility(GONE);
+        // Ocultar cargando
+        mContainerLoading.setVisibility(GONE);
         // Mostrar vista
         mContainerEmpty.setVisibility(VISIBLE);
+    }
+
+    /**
+     * Configura la vista del loading
+     * @param layout
+     */
+    public void setLoadingView(int layout){
+        // Inflar vista en el contenedor
+        View view = LayoutInflater.from(getContext()).inflate(layout, mContainerLoading, false);
+        // Agregamos la vista
+        setLoadingView(view);
+    }
+
+    /**
+     * Configura la vista de cargando
+     * @param view
+     */
+    public void setLoadingView(View view){
+        // Agregar vista
+        mContainerLoading.addView(view);
+    }
+
+    /**
+     * Muestra la vista de cargando
+     */
+    public void startLoading(){
+        // Ocultar listado
+        mSwipeRefresh.setVisibility(GONE);
+        // Ocultar vista de vacio
+        mContainerEmpty.setVisibility(GONE);
+        // Mostrar cargando
+        mContainerLoading.setVisibility(VISIBLE);
+    }
+
+    /**
+     * Oculta la vista de cargando
+     */
+    public void stopLoading(){
+        // Mostrar listado
+        mSwipeRefresh.setVisibility(VISIBLE);
+        // Ocultar vista de vacio
+        mContainerEmpty.setVisibility(GONE);
+        // Ocultar cargando
+        mContainerLoading.setVisibility(GONE);
     }
 
     /**
@@ -136,6 +186,8 @@ public class MobileiaRecyclerView extends RelativeLayout {
         mRecyclerView = findViewById(R.id.recyclerView);
         // Obtener contendor de vista vacia
         mContainerEmpty = findViewById(R.id.container_empty);
+        // Obtener contendor de la vista de cargando
+        mContainerLoading = findViewById(R.id.container_loading);
     }
     /**
      * Se encarga de inflar el layout base y agregarlo a la vista
