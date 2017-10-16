@@ -46,6 +46,25 @@ public class MobileiaRecyclerView extends RelativeLayout {
     }
 
     /**
+     * Setea el listener para el refresh
+     * @param listener
+     */
+    public void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener listener){
+        // Habilitar el refresh
+        mSwipeRefresh.setEnabled(true);
+        // Setear el listener
+        mSwipeRefresh.setOnRefreshListener(listener);
+    }
+
+    /**
+     * Para el refresh si ya se completo
+     */
+    public void stopRefreshing(){
+        // Parar el refreshing
+        mSwipeRefresh.setRefreshing(false);
+    }
+
+    /**
      * Setea el Layout Manager en el RecyclerView
      * @param layoutManager
      */
