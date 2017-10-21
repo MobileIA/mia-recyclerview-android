@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.mobileia.recyclerview.scroll.EndScrollListener;
+
 /**
  * Created by matiascamiletti on 15/10/17.
  */
@@ -23,6 +25,10 @@ public class MobileiaRecyclerView extends RelativeLayout {
      * Almacena instancia del listado
      */
     protected RecyclerView mRecyclerView;
+    /**
+     * Funcionalidad para que el listado sea infinito
+     */
+    protected EndScrollListener mEndScrollListener;
     /**
      * Almacena contenedor de la vista de cuando no hay elementos
      */
@@ -51,6 +57,26 @@ public class MobileiaRecyclerView extends RelativeLayout {
     public MobileiaRecyclerView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
+    }
+
+    /**
+     * Setea el listener para la funcionalidad de scroll infinito.
+     * @param listener
+     */
+    public void setOnEndScrollListener(EndScrollListener listener){
+        // Guardamos listener
+        mEndScrollListener = listener;
+        // Lo agregamos al recyclerView
+        mRecyclerView.addOnScrollListener(mEndScrollListener);
+    }
+
+    /**
+     * Permite cancelar el loading infinito.
+     */
+    public void stopEndScroll(){
+        if(mEndScrollListener != null){
+            mEndScrollListener.stopLoad();
+        }
     }
 
     /**

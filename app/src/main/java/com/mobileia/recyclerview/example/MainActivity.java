@@ -9,6 +9,7 @@ import com.mobileia.recyclerview.MobileiaRecyclerView;
 import com.mobileia.recyclerview.adapter.BuilderAdapter;
 import com.mobileia.recyclerview.example.entity.ItemTest;
 import com.mobileia.recyclerview.example.view.holder.ItemHolder;
+import com.mobileia.recyclerview.scroll.EndScrollListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,11 +43,23 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.stopRefreshing();
             }
         });
+        // Agregar scroll inifinito
+        recyclerView.setOnEndScrollListener(new EndScrollListener() {
+            @Override
+            public void onScrolledToEnd() {
+                adapter.add(new ItemTest("Title 3", "Subitulo 1"));
+                adapter.add(new ItemTest("Title 4", "Esto es una prueba loca."));
+
+                if(adapter.getItemCount() > 30){
+                    recyclerView.stopEndScroll();
+                }
+            }
+        });
         // Agregar vista vacia
         recyclerView.setEmptyView(R.layout.item_empty);
-        recyclerView.showEmptyView();
+        //recyclerView.showEmptyView();
         // Agregar vista de loading
         recyclerView.setLoadingView(R.layout.item_loading);
-        recyclerView.startLoading();
+        //recyclerView.startLoading();
     }
 }
