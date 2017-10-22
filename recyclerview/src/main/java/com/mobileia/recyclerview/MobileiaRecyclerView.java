@@ -99,6 +99,14 @@ public class MobileiaRecyclerView extends RelativeLayout {
     }
 
     /**
+     * Setea la posición del listado
+     * @param position
+     */
+    public void scrollToPosition(int position){
+        mRecyclerView.getLayoutManager().scrollToPosition(position);
+    }
+
+    /**
      * Setea el Layout Manager en el RecyclerView
      * @param layoutManager
      */
