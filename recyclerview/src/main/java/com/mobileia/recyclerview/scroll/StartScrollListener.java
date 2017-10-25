@@ -4,10 +4,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 /**
- * Created by matiascamiletti on 21/10/17.
+ * Created by matiascamiletti on 25/10/17.
  */
 
-abstract public class EndScrollListener extends BaseScrollListener {
+abstract public class StartScrollListener extends BaseScrollListener {
 
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -16,19 +16,19 @@ abstract public class EndScrollListener extends BaseScrollListener {
         int visibleItemCount = recyclerView.getChildCount();
         int totalItemCount = recyclerView.getLayoutManager().getItemCount();
         int firstVisibleItem = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
-
+        // Verificamos si ya se cargaron nuevos items, viendo si la cantidad aumento
         if (mLoading && totalItemCount > mPreviousTotal) {
             mLoading = false;
             mPreviousTotal = totalItemCount;
         }
         int visibleThreshold = 5;
-        if (!mLoading && !mStopLoad && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
-            // End has been reached
-            onScrolledToEnd();
+        if (!mLoading && !mStopLoad && firstVisibleItem <= visibleThreshold) {
+            // Start has been reached
+            onScrolledToStart();
             // Seteamos que se esta cargando
             mLoading = true;
         }
     }
 
-    abstract public void onScrolledToEnd();
+    abstract public void onScrolledToStart();
 }

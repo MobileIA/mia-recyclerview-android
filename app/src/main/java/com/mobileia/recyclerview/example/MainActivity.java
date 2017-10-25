@@ -10,6 +10,7 @@ import com.mobileia.recyclerview.adapter.BuilderAdapter;
 import com.mobileia.recyclerview.example.entity.ItemTest;
 import com.mobileia.recyclerview.example.view.holder.ItemHolder;
 import com.mobileia.recyclerview.scroll.EndScrollListener;
+import com.mobileia.recyclerview.scroll.StartScrollListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +34,26 @@ public class MainActivity extends AppCompatActivity {
         // Agregar items
         adapter.add(new ItemTest("Title 1", "Subitulo 1"));
         adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 2", "Esto es una prueba loca."));
+        recyclerView.scrollToPosition(10);
         // Agregar refreshing
         recyclerView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -44,13 +65,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Agregar scroll inifinito
+        recyclerView.setOnStartScrollListener(new StartScrollListener() {
+            @Override
+            public void onScrolledToStart() {
+
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+                adapter.add(0, new ItemTest("Title -1", "Subitulo 123"));
+
+                if(adapter.getItemCount() > 100){
+                    recyclerView.stopStartScroll();
+                }
+            }
+        });
         recyclerView.setOnEndScrollListener(new EndScrollListener() {
             @Override
             public void onScrolledToEnd() {
+
                 adapter.add(new ItemTest("Title 3", "Subitulo 1"));
                 adapter.add(new ItemTest("Title 4", "Esto es una prueba loca."));
 
-                if(adapter.getItemCount() > 30){
+                if(adapter.getItemCount() > 100){
                     recyclerView.stopEndScroll();
                 }
             }
