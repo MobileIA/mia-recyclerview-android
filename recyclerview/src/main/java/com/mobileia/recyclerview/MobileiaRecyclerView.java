@@ -124,7 +124,7 @@ public class MobileiaRecyclerView extends RelativeLayout {
     }
 
     /**
-     * Setea la posición del listado
+     * Setea la posicion del listado
      * @param position
      */
     public void scrollToPosition(int position){
