@@ -95,4 +95,13 @@ public class BuilderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         mValues.add(index, object);
         notifyDataSetChanged();
     }
+
+    /**
+     * Funcino para agregar un listado de objetos
+     * @param list
+     */
+    public void add(ArrayList<Object> list){
+        mValues.addAll(list);
+        notifyDataSetChanged();
+    }
 }
