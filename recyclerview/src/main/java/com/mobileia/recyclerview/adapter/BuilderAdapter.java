@@ -49,7 +49,11 @@ public class BuilderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         try {
             // Generamos el viewHolder
-            return (BaseViewHolder)mViewHolder.getConstructor(View.class).newInstance(view);
+            BaseViewHolder holder = (BaseViewHolder)mViewHolder.getConstructor(View.class).newInstance(view);
+            // Configuramos el adapter
+            holder.setAdapter(this);
+            // Devolvemos holder
+            return holder;
         } catch (Exception e) {
             e.printStackTrace();
         }

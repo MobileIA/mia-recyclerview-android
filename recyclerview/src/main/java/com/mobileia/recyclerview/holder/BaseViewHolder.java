@@ -9,6 +9,10 @@ import android.view.View;
 
 public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
     /**
+     * Almacena el adapter
+     */
+    protected RecyclerView.Adapter mAdapter;
+    /**
      * Constructor base
      * @param itemView
      */
@@ -21,4 +25,25 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
      * @param object
      */
     public abstract void bind(T object);
+
+    /**
+     * Funcion para refrescar el adapter
+     */
+    public void notifyDataSetChanged(){
+        mAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Metodo para configurar el adapter
+     * @param adapter
+     */
+    public void setAdapter(RecyclerView.Adapter adapter){
+        mAdapter = adapter;
+    }
+
+    /**
+     * Metodo para obtener el adapter configurado
+     * @return
+     */
+    public RecyclerView.Adapter getAdapter(){ return mAdapter; }
 }
