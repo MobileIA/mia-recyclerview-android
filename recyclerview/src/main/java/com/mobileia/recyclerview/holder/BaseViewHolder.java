@@ -46,4 +46,10 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
      * @return
      */
     public RecyclerView.Adapter getAdapter(){ return mAdapter; }
+
+    /**
+     * Funcion para obtener la vista
+     * @return
+     */
+    public View getView(){ return itemView; }
 }
