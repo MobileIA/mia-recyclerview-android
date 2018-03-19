@@ -13,6 +13,8 @@ import android.widget.RelativeLayout;
 import com.mobileia.recyclerview.scroll.EndScrollListener;
 import com.mobileia.recyclerview.scroll.StartScrollListener;
 
+import io.supercharge.shimmerlayout.ShimmerLayout;
+
 /**
  * Created by matiascamiletti on 15/10/17.
  */
@@ -41,7 +43,7 @@ public class MobileiaRecyclerView extends RelativeLayout {
     /**
      * Almacena el contendor del loading
      */
-    protected RelativeLayout mContainerLoading;
+    protected ShimmerLayout mContainerLoading;
 
     public MobileiaRecyclerView(Context context) {
         super(context);
@@ -209,6 +211,8 @@ public class MobileiaRecyclerView extends RelativeLayout {
         mContainerEmpty.setVisibility(GONE);
         // Mostrar cargando
         mContainerLoading.setVisibility(VISIBLE);
+        // Activar shimmer
+        mContainerLoading.startShimmerAnimation();
     }
 
     /**
