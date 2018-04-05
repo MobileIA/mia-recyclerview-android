@@ -108,4 +108,12 @@ public class BuilderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         mValues.addAll(list);
         notifyDataSetChanged();
     }
+
+    /**
+     * Obtener array de los items
+     * @return
+     */
+    public ArrayList<Object> getValues() {
+        return mValues;
+    }
 }
