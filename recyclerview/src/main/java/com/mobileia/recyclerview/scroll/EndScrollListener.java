@@ -1,7 +1,7 @@
 package com.mobileia.recyclerview.scroll;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by matiascamiletti on 21/10/17.

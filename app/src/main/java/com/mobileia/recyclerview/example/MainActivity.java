@@ -1,9 +1,9 @@
 package com.mobileia.recyclerview.example;
 
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mobileia.recyclerview.MobileiaRecyclerView;
 import com.mobileia.recyclerview.adapter.BuilderAdapter;

@@ -3,8 +3,8 @@ package com.mobileia.recyclerview;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +12,6 @@ import android.widget.RelativeLayout;
 
 import com.mobileia.recyclerview.scroll.EndScrollListener;
 import com.mobileia.recyclerview.scroll.StartScrollListener;
-
-import io.supercharge.shimmerlayout.ShimmerLayout;
 
 /**
  * Created by matiascamiletti on 15/10/17.
@@ -43,7 +41,7 @@ public class MobileiaRecyclerView extends RelativeLayout {
     /**
      * Almacena el contendor del loading
      */
-    protected ShimmerLayout mContainerLoading;
+    protected RelativeLayout mContainerLoading;
 
     public MobileiaRecyclerView(Context context) {
         super(context);
@@ -211,8 +209,6 @@ public class MobileiaRecyclerView extends RelativeLayout {
         mContainerEmpty.setVisibility(GONE);
         // Mostrar cargando
         mContainerLoading.setVisibility(VISIBLE);
-        // Activar shimmer
-        mContainerLoading.startShimmerAnimation();
     }
 
     /**
