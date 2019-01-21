@@ -3,12 +3,19 @@ package com.mobileia.recyclerview.example;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mobileia.recyclerview.MobileiaRecyclerView;
+import com.mobileia.recyclerview.action.ItemTypeClickListener;
 import com.mobileia.recyclerview.adapter.BuilderAdapter;
+import com.mobileia.recyclerview.adapter.ItemTypeHolder;
+import com.mobileia.recyclerview.adapter.MultiBuilderAdapter;
 import com.mobileia.recyclerview.example.entity.ItemTest;
+import com.mobileia.recyclerview.example.entity.ItemTestTwo;
 import com.mobileia.recyclerview.example.view.holder.ItemHolder;
+import com.mobileia.recyclerview.example.view.holder.ItemTwoHolder;
 import com.mobileia.recyclerview.scroll.EndScrollListener;
 import com.mobileia.recyclerview.scroll.StartScrollListener;
 
@@ -18,7 +25,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setUpList();
+        //setUpList();
+        setUpListMulti();
+    }
+
+    protected void setUpListMulti() {
+        // Obtememos el listado
+        final MobileiaRecyclerView recyclerView = (MobileiaRecyclerView)findViewById(R.id.list);
+        // configuramos el Layout
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // Crear el adapter
+        final MultiBuilderAdapter adapter = new MultiBuilderAdapter();
+        adapter.register(new ItemTypeHolder(R.layout.item_multi_one, ItemHolder.class, null));
+        adapter.register(new ItemTypeHolder(R.layout.item_multi_two, ItemTwoHolder.class, new ItemTypeClickListener<Object>() {
+            @Override
+            public void onItemClick(View view, Object item) {
+                ItemTestTwo itemC = (ItemTestTwo)item;
+                System.out.println("CLick Item 2: " + itemC.title);
+            }
+        }));
+        // Setear adapter
+        recyclerView.setAdapter(adapter);
+        // Agregar items
+        adapter.add(new ItemTest("Title 1", "Subitulo 1"));
+        adapter.add(new ItemTestTwo("Title 2", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 3", "Esto es una prueba loca."));
+
+        adapter.add(new ItemTest("Title 4", "Esto es una prueba loca."));
+        adapter.add(new ItemTestTwo("Title 5", "Esto es una prueba loca."));
+        adapter.add(new ItemTest("Title 6", "Esto es una prueba loca."));
     }
 
     protected void setUpList(){

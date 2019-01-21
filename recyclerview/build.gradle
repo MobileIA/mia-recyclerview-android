@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 ext {
     bintrayRepo = 'maven'
@@ -13,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/MobileIA/mia-recyclerview-android'
     gitUrl = 'https://github.com/MobileIA/mia-recyclerview-android.git'
 
-    libraryVersion = '0.0.23'
+    libraryVersion = '0.0.29'
 
     developerId = 'mobileia'
     developerName = 'MobileIA'
@@ -31,8 +33,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 23
-        versionName "0.0.23"
+        versionCode 29
+        versionName "0.0.29"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -53,7 +55,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
     testImplementation 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 apply from: '../installv1.gradle'
 apply from: '../bintrayv1.gradle'
+
